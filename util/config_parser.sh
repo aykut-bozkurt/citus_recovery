@@ -95,19 +95,20 @@ get_restore_point()
         echo ${restorePoint}
 }
 
-get_cluster_name "$1"
-get_coordinator "$1"
-get_workers "$1"
-get_all_nodes "$1"
-get_backup_base_dir "$1"
-get_archive_base_dir "$1"
-get_backup_to_restore "$1"
-get_restore_point "$1"
-get_cluster_base_dir "$1"
+# tests
+#get_cluster_name "$1"
+#get_coordinator "$1"
+#get_workers "$1"
+#get_all_nodes "$1"
+#get_backup_base_dir "$1"
+#get_archive_base_dir "$1"
+#get_backup_to_restore "$1"
+#get_restore_point "$1"
+#get_cluster_base_dir "$1"
 
-all_nodes=$(get_all_nodes "$1")
-for node in $all_nodes; do
-	echo $(get_node_property "$1" "$node" "name")
-done
+#all_nodes=$(get_all_nodes "$1")
+#for node in $all_nodes; do
+#	echo $(get_node_property "$1" "$node" "name")
+#done
 
-get_all_node_names "$1"
+#get_all_node_names "$1"
