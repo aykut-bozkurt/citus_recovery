@@ -1,0 +1,32 @@
+{
+	"clusterName": "optumCluster",
+	"workerCount": 2,
+	"coordinatorNode": {
+				"name": "coordinator",
+				"hostname": "localhost",
+				"port": 9700,
+				"username": "aykutbozkurt",
+				"dbname": "aykutbozkurt"
+		 	},
+	"workerNodes": [
+		{
+			"name": "worker0",
+			"hostname": "localhost",
+			"port": 9701,
+			"username": "aykutbozkurt",
+			"dbname": "aykutbozkurt"
+		},
+		{
+			"name": "worker1",
+			"hostname": "localhost",
+			"port": 9702,
+			"username": "aykutbozkurt",
+			"dbname": "aykutbozkurt"
+		}
+	],
+	"clusterBaseFolder": "/home/aykutbozkurt/optumCluster",
+	"archiveBaseFolder": "/home/aykutbozkurt/optumWalArchive",
+	"backupBaseFolder": "/home/aykutbozkurt/optumBackups",
+	"backupToRestore": "01042023-020000AM",
+	"restorePoint": "01042023-150000PM"
+}

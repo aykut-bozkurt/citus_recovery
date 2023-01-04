@@ -1,0 +1,19 @@
+We will create a citus cluster with 2 workers. Create and distribute a table named xx. Insert 15m rows into it. 
+Take restore point so that we will get back to that point. Insert 15m rows again. Currently we have 30m rows in xx. 
+After that, we will restore to old state. Now we can verify we have 15m rows.
+
+
+1. Create optumCluster with citus_dev with 2 workers. (citus_dev make optumCluster --destroy)
+2. Stop cluster. (citus_dev stop optumCluster)
+3. Run cluster_prepare_archiving.sh (bash cluster_prepare_archiving.sh "<node_names>")
+4. Start cluster. (citus_dev start optumCluster)
+5. Take backups. (bash cluster_take_basebackup.sh "<node_names>" <backup_date>)
+6. Create table and insert records. (create table xx(id int); select create_distributed_table('xx','id'); insert into xx select i from generate_series(1,15000000);)
+7. Create restore points. (bash cluster_create_restore_points.sh <coordinator_name> <restore_point_name>)
+8. Insert more records (insert into xx select i from generate_series(1,15000000);)
+9. Stop cluster. (citus_dev stop optumCluster)
+
+10. Run cluster_restore_start.sh (bash cluster_restore_start.sh "<node_names>" <backup_date> <restore_point_name>)
+11. Connect to coordinator and make sanity checks.
+12. Run cluster_restore_finish.sh (bash cluster_restore_finish.sh "<node_names>")
+
